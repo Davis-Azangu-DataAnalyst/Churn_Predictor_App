@@ -1,7 +1,10 @@
 import streamlit as st
 import pyodbc
+
+
 st.set_page_config(
     page_title= 'Data Page',
+    page_icon=":chart_with_upwards_trend:",
     layout= 'wide'
 )
 
