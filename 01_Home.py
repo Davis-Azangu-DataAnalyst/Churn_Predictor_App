@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-import pickle
+import joblib
 from pathlib import Path
 import streamlit_authenticator as stauth
 
@@ -11,10 +11,10 @@ st.set_page_config(
 )
 
 # Try to load the hashed passwords
-file_path = os.path.join("Assets", "hashed_pw.pkl")
+file_path = os.path.join("Assets", "hashed_pw.joblib")
 try:
     with open(file_path, "rb") as file:
-        hashed_passwords = pickle.load(file)
+        hashed_passwords = joblib.load(file)
 except FileNotFoundError:
     st.error("Hashed password file not found! Please ensure the file 'hashed_pw.pkl' exists in the correct directory.")
     st.stop()
@@ -35,7 +35,7 @@ usernames = ["Max33", "Danna"]
 credentials = dict(zip(usernames, hashed_passwords))
 
 # Instantiate the authenticator
-authenticator = stauth.Authenticate(names, credentials, "Dashboard", "xxxfff", cookie_expiry_days=10)
+authenticator = stauth.Authenticate(names, credentials, "1234", cookie_expiry_days=10)
 
 # Your Streamlit app code goes here
 st.title("Churn Predictor Web App")
@@ -72,3 +72,4 @@ elif authentication_status is False:
     st.error("Username/password is incorrect")
 elif authentication_status is None:
     st.warning("Please enter your username and password")
+
