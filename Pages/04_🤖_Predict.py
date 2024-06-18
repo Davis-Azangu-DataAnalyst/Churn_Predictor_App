@@ -56,9 +56,8 @@ if 'prediction' not in st.session_state:
             st.session_state['prediction'] = None
 if 'probability' not in st.session_state:
             st.session_state['probability'] = None
-
-
-
+            
+st.cache_resource(show_spinner= 'models loading...')
 def make_predictions(pipeline, encoder):
         gender = st.session_state['gender']
         partner = st.session_state['partner']
