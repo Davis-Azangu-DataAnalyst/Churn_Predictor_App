@@ -21,6 +21,10 @@ def eda_dashboard():
          scatter_plot = px.scatter(df, x='tenure', y='monthlycharges', title='Tenure to monthly charges Distribution in the Churn',
                      color='churn', color_discrete_map={'Yes':'green', 'No':'darkblue'})
          st.plotly_chart(scatter_plot)
+         
+         histogram = px.histogram(df, x='monthly charges', title='Monthly charges')
+         
+         st.plotly_chart(histogram)
     with col2:
         churn_gender_counts = df.groupby(['gender', 'churn']).size().reset_index(name='count') #Groupby
         fig = px.bar(churn_gender_counts, x='gender', y='count', color='churn', barmode='group',
