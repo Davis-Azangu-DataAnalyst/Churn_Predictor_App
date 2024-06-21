@@ -107,12 +107,7 @@ def make_predictions(pipeline, encoder):
         df['monthlycharges'] = pd.to_numeric(df['monthlycharges'], errors='coerce')
         df['totalcharges'] = pd.to_numeric(df['totalcharges'], errors='coerce')
 
-        # This makes prediction for History
-        df['Predictions Time'] = datetime.date.today()
-        df['Model Used'] = st.session_state['selected_model']
-
-        df.to_csv('./Data/history.csv' ,mode='a',header=not os.path.exists('./Data/history.csv'), index=False)
-
+        
         # Make a prediction and probability
         pred = pipeline.predict(df)
         pred_int = int(pred[0])
@@ -125,6 +120,14 @@ def make_predictions(pipeline, encoder):
                 # Updating/Save in session state
         st.session_state['prediction'] = prediction
         st.session_state['probability'] = probability
+
+         # This makes prediction for History
+        df['prediction']= prediction
+        df['Predictions Time'] = datetime.date.today()
+        df['Model Used'] = st.session_state['selected_model']
+
+        df.to_csv('./Data/history.csv' ,mode='a',header=not os.path.exists('./Data/history.csv'), index=False)
+
 
         return prediction, probability
 
