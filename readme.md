@@ -60,12 +60,11 @@ To use the churn prediction web app, you can follow these steps:
 
 ## Model Training
 
-wo best performing models (KNN and Logistic Regression models) were selected from my previous project. From this repository: [https://github.com/Davis-Azangu-DataAnalyst/Classification-Project-LP2](https://github.com/Davis-Azangu-DataAnalyst/Classification-Project-LP2)
- process of training the churn prediction model is described in detail in the `model_training.ipynb` Jupyter Notebook. It covers data preprocessing, feature engineering, model selection, and model training using various machine learning algorithms.
+Two best performing models (KNN and Logistic Regression models) were selected from my previous project: [https://github.com/Davis-Azangu-DataAnalyst/Classification-Project-LP2](https://github.com/Davis-Azangu-DataAnalyst/Classification-Project-LP2). The EDA and data training, validation and modeling are  described in detail in the `Churn_LP2 1_V2.ipynb` Jupyter Notebook. It covers data preprocessing, feature engineering, model selection, and model training using various machine learning algorithms.
 
 ## Web App
 
-The Streamlit web app is implemented in the `app.py` file. It utilizes the trained churn prediction model to make predictions based on user input. The app provides a user interface where users can enter customer information and receive churn predictions instantly.
+The Streamlit web app is implemented in the `01_Home.py` file. It utilizes the trained churn prediction model to make predictions based on user input. The app provides a user interface where users can enter customer information and receive churn predictions instantly.
 
 ## Contributing
 
