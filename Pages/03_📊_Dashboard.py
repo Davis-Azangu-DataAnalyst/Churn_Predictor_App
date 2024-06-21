@@ -47,12 +47,22 @@ def eda_dashboard():
   # Monthly charges histogram
     col1,col2,col3 = st.columns(3)
     with col1:
+<<<<<<< HEAD
         monthlycharges_histogram = px.histogram(final,x="monthlycharges",title="Distribution of monthly charges")
         monthlycharges_histogram.update_traces(marker_color="darkblue")
         st.plotly_chart(monthlycharges_histogram)
 
     
    # Tenure distribution histogram
+=======
+         scatter_plot = px.scatter(df, x='tenure', y='monthlycharges', title='Tenure to monthly charges Distribution in the Churn',
+                     color='churn', color_discrete_map={'Yes':'green', 'No':'darkblue'})
+         st.plotly_chart(scatter_plot)
+         
+         histogram = px.histogram(df, x='monthly charges', title='Monthly charges')
+         
+         st.plotly_chart(histogram)
+>>>>>>> a6bf829baafb9673e7a1dcc3583c380d73e4370b
     with col2:
         tenure_histogram = px.histogram(final,x="tenure",title="Distribution of tenure")
         tenure_histogram.update_traces(marker_color="darkblue")
