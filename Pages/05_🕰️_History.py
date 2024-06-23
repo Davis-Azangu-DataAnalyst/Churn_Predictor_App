@@ -1,4 +1,7 @@
 import streamlit as st
+from authentication import authenticated_page
+
+
 
 # function to set up page configuration
 st.set_page_config(
@@ -7,7 +10,8 @@ st.set_page_config(
         layout="wide",
     )
 
-st.title('Prediction History')
+if authenticated_page():
+    st.title('Prediction History 📚')
 
 
 
