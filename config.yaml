@@ -1,0 +1,15 @@
+credentials:
+  usernames:
+    DataWhizz04:
+      email: daviskasore04@gmail.com
+      logged_in: False # Will be managed automatically
+      name: Davis Azangu
+      password: max123 # Will be hashed automatically
+cookie:
+  expiry_days: 0
+  key: cookie_signature_key # Must be string
+  name: cookie_name
+preauthorized:
+  emails:
+  - davisazangu@gmail.com
+users: 
