@@ -101,30 +101,32 @@ def make_predictions(pipeline, encoder):
         # Create a dataframe
         df= pd.DataFrame(data, columns=columns)
         
-
+        
         # Change the data types to numerical 
         df['tenure'] = pd.to_numeric(df['tenure'], errors='coerce')
         df['monthlycharges'] = pd.to_numeric(df['monthlycharges'], errors='coerce')
         df['totalcharges'] = pd.to_numeric(df['totalcharges'], errors='coerce')
 
-        # This makes prediction for History
-        df['Predictions Time'] = datetime.date.today()
-        df['Model Used'] = st.session_state['selected_model']
-
-        df.to_csv('./Data/history.csv' ,mode='a',header=not os.path.exists('./Data/history.csv'), index=False)
+        
 
         # Make a prediction and probability
         pred = pipeline.predict(df)
         pred_int = int(pred[0])
         prediction = encoder.inverse_transform([pred_int])
-
-
-                # Get probabilities
         probability = pipeline.predict_proba(df)
 
                 # Updating/Save in session state
         st.session_state['prediction'] = prediction
         st.session_state['probability'] = probability
+
+        # This makes prediction for History
+        df['prediction'] = prediction
+        df['time_of_prediction'] = datetime.date.today()
+        df['model_used'] = st.session_state['selected_model']
+
+        
+
+        df.to_csv('./Data/history.csv', mode='a',header=not os.path.exists('./Data/history.csv'), index=False)
 
         return prediction, probability
 
